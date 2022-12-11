@@ -21,12 +21,13 @@ function onInputChange() {
 }
 
 function requestFilter(response) {
+  if (response == undefined) return;
+
   if (response.length == 1) {
     clearMarkup();
     createCountryCard(response);
     return;
   }
-
   if (response.length > 10) {
     clearMarkup();
     Notiflix.Notify.info(
@@ -34,13 +35,11 @@ function requestFilter(response) {
     );
     return;
   }
-
   if (response.length <= 10) {
     clearMarkup();
     createCountryList(response);
     return;
   }
-  return;
 }
 
 function createCountryList(country) {
